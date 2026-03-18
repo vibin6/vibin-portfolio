@@ -34,7 +34,14 @@
     }
 
     html {
-      scroll-behavior: smooth
+      scroll-behavior: smooth;
+      font-size: 18.5px
+    }
+
+    @media(max-width: 768px) {
+      html {
+        font-size: 16.5px
+      }
     }
 
     body {
@@ -109,7 +116,7 @@
     .ni {
       max-width: 76rem;
       margin: 0 auto;
-      padding: 1.4rem 2rem;
+      padding: 1.8rem 2.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between
@@ -117,15 +124,24 @@
 
     .logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem;
+      font-size: 1.7rem;
       font-weight: 600;
       letter-spacing: .06em;
       color: var(--ww);
       cursor: pointer;
-      transition: opacity .3s
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: all .4s ease
     }
 
-    .logo:hover {
+    #nav.solid .logo {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0)
+    }
+
+    #nav.solid .logo:hover {
       opacity: .65
     }
 
@@ -136,7 +152,7 @@
     }
 
     .nl a {
-      font-size: .7rem;
+      font-size: .85rem;
       letter-spacing: .2em;
       text-transform: uppercase;
       color: var(--s400);
