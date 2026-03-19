@@ -22,7 +22,7 @@
       --s900: #0f1117;
       --s800: #181c25;
       --s700: #b1c1e3;
-      --s600: #3a4050;
+      --s600: #c5d0ec;
       --s400: #8892a4;
       --s300: #b0bac8;
       --s200: #d0d8e4;
@@ -31,6 +31,25 @@
       --w200: #d8d0c4;
       --line: rgba(255, 255, 255, 0.07);
       --linew: rgba(232, 224, 212, 0.15);
+      --bg-rgb: 15, 17, 23;
+      --fg-rgb: 255, 255, 255;
+    }
+
+    :root.light-mode {
+      --s900: #f5f5f7;
+      --s800: #ffffff;
+      --s700: #e2e8f0;
+      --s600: #94a3b8;
+      --s400: #64748b;
+      --s300: #475569;
+      --s200: #334155;
+      --ww: #0f172a;
+      --w100: #1e293b;
+      --w200: #334155;
+      --line: rgba(0, 0, 0, 0.08);
+      --linew: rgba(0, 0, 0, 0.15);
+      --bg-rgb: 245, 245, 247;
+      --fg-rgb: 15, 23, 42;
     }
 
     html {
@@ -108,7 +127,7 @@
     }
 
     #nav.solid {
-      background: rgba(15, 17, 23, .9);
+      background: rgba(var(--bg-rgb), .9);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--line)
     }
@@ -168,7 +187,7 @@
 
     .ncta {
       padding: .5rem 1.35rem;
-      border: 1px solid rgba(245, 242, 238, .18);
+      border: 1px solid rgba(var(--fg-rgb), .18);
       color: var(--ww);
       font-size: .7rem;
       letter-spacing: .2em;
@@ -220,14 +239,14 @@
     .ho {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(15, 17, 23, .97) 0%, rgba(15, 17, 23, .68) 40%, rgba(15, 17, 23, .22) 75%, rgba(15, 17, 23, .08) 100%);
+      background: linear-gradient(to top, rgba(var(--bg-rgb), .97) 0%, rgba(var(--bg-rgb), .68) 40%, rgba(var(--bg-rgb), .22) 75%, rgba(var(--bg-rgb), .08) 100%);
       pointer-events: none
     }
 
     .ho2 {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, rgba(15, 17, 23, .55) 0%, transparent 55%, rgba(15, 17, 23, .15) 100%);
+      background: linear-gradient(to right, rgba(var(--bg-rgb), .55) 0%, transparent 55%, rgba(var(--bg-rgb), .15) 100%);
       pointer-events: none
     }
 
@@ -374,22 +393,22 @@
 
     .bb {
       padding: .82rem 2rem;
-      border: 1px solid rgba(245, 242, 238, .16);
+      border: 1px solid rgba(var(--fg-rgb), .16);
       color: var(--ww);
       font-size: .72rem;
       letter-spacing: .2em;
       text-transform: uppercase;
       font-weight: 400;
       font-family: 'Outfit', sans-serif;
-      background: rgba(255, 255, 255, .035);
+      background: rgba(var(--fg-rgb), .035);
       cursor: pointer;
       transition: all .3s;
       backdrop-filter: blur(8px)
     }
 
     .bb:hover {
-      border-color: rgba(245, 242, 238, .45);
-      background: rgba(255, 255, 255, .07)
+      border-color: rgba(var(--fg-rgb), .45);
+      background: rgba(var(--fg-rgb), .07)
     }
 
     .hscroll {
@@ -509,16 +528,16 @@
     }
 
     .ab p {
-      color: var(--s400);
-      font-size: .95rem;
+      color: var(--s200);
+      font-size: 1rem;
       line-height: 1.9;
       margin-bottom: 1rem;
-      font-weight: 300
+      font-weight: 400
     }
 
     .ab p strong {
-      color: var(--s300);
-      font-weight: 500
+      color: var(--ww);
+      font-weight: 600
     }
 
     .chips {
@@ -584,10 +603,10 @@
 
     .aside-quote p {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       font-style: italic;
-      font-weight: 300;
-      color: var(--s400);
+      font-weight: 400;
+      color: var(--ww);
       line-height: 1.8
     }
 
@@ -667,7 +686,7 @@
     }
 
     .pc:hover {
-      background: var(--s700)
+      background: var(--s900)
     }
 
     .pc:hover::before {
@@ -1109,6 +1128,7 @@
         <li><a onclick="go('skills')">Skills</a></li>
         <li><a onclick="go('contact')">Contact</a></li>
       </ul>
+      <button id="theme-toggle" class="ncta" onclick="toggleTheme()" aria-label="Toggle Theme">Toggle Theme</button>
     </div>
   </nav>
 
@@ -1202,7 +1222,7 @@
       </div>
       <div class="ph-row">
         <h2 class="sh2 fu" style="transition-delay:.1s">Selected <em>projects.</em></h2>
-        <p class="fu" style="transition-delay:.2s">A focused set of design & development work , each solving a real
+        <p class="fu" style="transition-delay:.2s">A focused set of design & development work, each solving a real
           problem.</p>
       </div>
     </div>
@@ -1309,8 +1329,11 @@
           <div class="sl-l"></div><span class="sl-t">Contact</span>
         </div>
         <h2 class="sh2 fu" style="transition-delay:.1s;margin-bottom:1.35rem">Let's build <em>something.</em></h2>
-        <p class="ci-intro fu" style="transition-delay:.2s">Open to design collaborations, freelance work, and good
-          conversations. I respond thoughtfully - usually within a day.</p>
+        <p class="ci-intro fu" style="transition-delay:.2s">
+          Open to design collaborations, freelance work, and good
+          conversations.
+          <br>I respond thoughtfully - usually within a day.
+        </p>
       </div>
 
       <div class="cg" style="margin-top:2.5rem; gap:1.5rem;">
@@ -1353,14 +1376,15 @@
             </div>
             <div class="cla">→</div>
           </a>
-          <div class="avail fu" style="transition-delay:.35s; margin-top:2.5rem;">
-            <div class="avd">
-              <div class="avd-p"></div>
-              <div class="avd-i"></div>
-            </div>
-            <span class="avt">Available for new projects</span>
-          </div>
         </div>
+      </div>
+
+      <div class="avail fu" style="transition-delay:.35s; margin-top:4.5rem; justify-content: center; width: 100%;">
+        <div class="avd">
+          <div class="avd-p"></div>
+          <div class="avd-i"></div>
+        </div>
+        <span class="avt">Available for new projects</span>
       </div>
     </div>
   </section>
@@ -1369,6 +1393,21 @@
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script>
+    // ── Theme Toggle
+    const themeBtn = document.getElementById('theme-toggle');
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.add('light-mode');
+      if (themeBtn) themeBtn.innerText = 'Toggle Theme';
+    }
+    function toggleTheme() {
+      const root = document.documentElement;
+      root.classList.toggle('light-mode');
+      const isLight = root.classList.contains('light-mode');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      const btn = document.getElementById('theme-toggle');
+      if (btn) btn.innerText = 'Toggle Theme';
+    }
+
     // ── Cursor
     const cd = document.getElementById('cd'), cr = document.getElementById('cr');
     let mx = 0, my = 0, rx = 0, ry = 0;
